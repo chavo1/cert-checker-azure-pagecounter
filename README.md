@@ -4,7 +4,7 @@
 
 - Create Azure HA app with DB more details [HERE](./infra/README.md)
 
-## How to us it 
+## How to use it 
 
 - Make sure you have [Python](https://www.python.org/downloads/), Bash or interpreter for the cert checker task
 - Make sure you have [Terraform](https://developer.hashicorp.com/terraform/install?product_intent=terraform) for the Azure HA app
