@@ -1,0 +1,28 @@
+Explanation
+
+    Function get_ssl_expiry_date:
+        Description and Args: Added a docstring explaining the purpose, arguments, return value, and potential exceptions.
+        Error Handling: Wrapped the connection and certificate retrieval code in a try-except block to handle ssl.SSLError, socket.error, and ValueError.
+        Improved Clarity: Used meaningful variable names and added comments to explain each step.
+
+    Function display_expiry_date:
+        This function calls get_ssl_expiry_date and prints the expiration date.
+        Error Handling: Catches and prints any exceptions raised during the process.
+
+    Main Function:
+        Kept the hostname variable for easy modification.
+        Calls display_expiry_date to handle the process.
+
+    Efficiency:
+        The script uses context managers (with statements) to ensure resources are properly managed and connections are closed after use.
+        Setting a reasonable timeout (10 seconds) for the connection to avoid hanging indefinitely.
+
+Running the Script
+
+Save the script to a file (e.g., check_ssl_expiry.py) and execute it:
+
+bash
+
+python check_ssl_expiry.py
+
+This will display the SSL/TLS certificate expiration date for "example.com" in a clear and readable format, handling errors gracefully.

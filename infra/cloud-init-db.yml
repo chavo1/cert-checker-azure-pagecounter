@@ -1,0 +1,16 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+packages:
+  - mysql-server
+runcmd:
+  - sudo systemctl start mysql
+  - sudo systemctl enable mysql
+  - sudo mysql -u root -e "CREATE DATABASE counterdb;"
+  - sudo mysql -u root -e "CREATE USER 'counteruser'@'%' IDENTIFIED BY 'P@ssword123!';"
+  - sudo mysql -u root -e "GRANT ALL PRIVILEGES ON counterdb.* TO 'counteruser'@'%';"
+  - sudo mysql -u root -e "FLUSH PRIVILEGES;"
+  - sudo sed -i 's/bind-address.*/bind-address = 0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
+  - sudo systemctl restart mysql
+  - sudo ufw allow 3306
+  - sudo ufw reload

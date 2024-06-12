@@ -1,0 +1,32 @@
+Explanation
+
+    Function get_ssl_expiry_date:
+        Takes the hostname as an argument.
+        Uses openssl s_client to connect to the server and retrieve the SSL certificate details.
+        Parses the output to extract the expiration date (notAfter field).
+        Converts the extracted date to a human-readable format using the date command.
+        Prints the formatted expiration date.
+
+    Function display_expiry_date:
+        Takes the hostname as an argument.
+        Prints a message with the hostname and calls get_ssl_expiry_date to retrieve and display the expiration date.
+
+    Main function:
+        Sets the hostname to "example.com".
+        Calls display_expiry_date to handle the process.
+
+Running the Script
+
+Save the script to a file, for example, check_ssl_expiry.sh, and make it executable:
+
+bash
+
+chmod +x check_ssl_expiry.sh
+
+Execute the script:
+
+bash
+
+./check_ssl_expiry.sh
+
+This script will display the SSL/TLS certificate expiration date for "example.com" in a clear and readable format, handling errors gracefully.

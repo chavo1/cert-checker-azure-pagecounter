@@ -1,0 +1,2 @@
+ssh azureuser@<web_server_public_ip_0>
+ssh azureuser@<web_server_public_ip_1>
