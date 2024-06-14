@@ -1,12 +1,13 @@
+# Create the database VM.
 resource "azurerm_virtual_machine" "db" {
-  name                  = "db-vm"
+  name                  = "${local.unique_suffix}-db-vm"
   location              = azurerm_resource_group.main.location
   resource_group_name   = azurerm_resource_group.main.name
   network_interface_ids = [azurerm_network_interface.db.id]
   vm_size               = "Standard_B1s"
 
   storage_os_disk {
-    name              = "db-os-disk"
+    name              = "${local.unique_suffix}-db-os-disk"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
@@ -20,7 +21,7 @@ resource "azurerm_virtual_machine" "db" {
   }
 
   os_profile {
-    computer_name  = "db-vm"
+    computer_name  = "${local.unique_suffix}-db-vm"
     admin_username = "azureuser"
     admin_password = "P@ssword123!"
     custom_data    = file("cloud-init-db.yml")

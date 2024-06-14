@@ -1,2 +1,28 @@
 ssh azureuser@<web_server_public_ip_0>
 ssh azureuser@<web_server_public_ip_1>
+
+Explanation
+
+    Provider: Configures the AzureRM provider.
+    Variables: Defines the number of VMs and a base name for all resources.
+    Random ID: Generates a unique suffix for resource names.
+    Local Variables: Creates a list of VM indices and a unique suffix for resource names.
+    Resource Group: Creates a resource group for all resources.
+    Virtual Network: Creates a virtual network.
+    Subnet: Creates a subnet within the virtual network.
+    Availability Set: Creates an availability set for the VMs.
+    Template File: Loads the cloud-init script for web VMs.
+    Public IP: Creates a dynamic public IP for each web VM.
+    Network Interface: Creates a network interface for each web VM.
+    Virtual Machine: Creates each web VM with the given configuration, ensuring the OS disk is deleted when the VM is terminated and the new VM is created before the old one is destroyed.
+    Backend Address Pool Association: Associates network interfaces with the backend address pool of the load balancer.
+    Database VM: Creates the database VM.
+    Database Network Interface: Creates the network interface for the database VM.
+    Load Balancer Public IP: Creates a public IP for the load balancer.
+    Load Balancer: Creates the load balancer.
+    Backend Address Pool: Creates a backend address pool for the load balancer.
+    Health Probe: Creates an HTTP health probe for the load balancer.
+    Load Balancer Rule: Creates an HTTP load balancing rule.
+    Network Security Group: Creates a network security group for the web VMs.
+    Network Security Group Association: Associates the network security group with each web VM's network interface.
+    Outputs: Outputs various details like the load balancer public IP, MySQL private IP, web server public and private IPs, and debug information for web server public IPs.
